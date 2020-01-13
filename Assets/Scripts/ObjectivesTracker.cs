@@ -5,20 +5,25 @@ using UnityEngine.UI;
 
 public class ObjectivesTracker : MonoBehaviour
 {
+    //Elapsed time tracker
     private float elapsedTime = 0.0f;
 
+    //Reference to player script
+    private PlayerMoverScript speedController;
+
+    //Lap tracker
     private int currentLap = 0;
 
     private const int totalLaps = 5;
 
+    //Nitro
     private float nitro = 0.0f;
 
     private bool nitroActivate = false;
 
     [SerializeField] private Slider slider;
 
-    private PlayerMoverScript speedController;
-
+    //Reference to the car object itself.
     private GameObject player;
 
     // Start is called before the first frame update
