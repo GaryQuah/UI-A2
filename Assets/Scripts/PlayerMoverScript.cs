@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerMoverScript : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class PlayerMoverScript : MonoBehaviour
 
     private ObjectivesTracker objectivesTracker;
 
+    private RawImage windImage;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +30,12 @@ public class PlayerMoverScript : MonoBehaviour
         objectivesTrackerObject = GameObject.Find("ObjectivesTracker");
 
         objectivesTracker = objectivesTrackerObject.GetComponent<ObjectivesTracker>();
+
+        //Getting a reference to the wind effect image.
+        GameObject tempGo = GameObject.Find("WindImageEffect");
+
+        windImage = tempGo.GetComponent<RawImage>();
+        windImage.enabled = false;
     }
 
     // Update is called once per frame
@@ -75,12 +84,18 @@ public class PlayerMoverScript : MonoBehaviour
                 moveSpeed += 1.0f;
 
                 objectivesTracker.setNitroActive(false);
+                windImage.enabled = false;
             }
             else
                 moveSpeed -= 0.1f;
 
             if (moveSpeed > 240)
                 moveSpeed = 240;
+        }
+
+        if (objectivesTracker.getNitroActive())
+        {
+            windImage.enabled = true;
         }
 
         Vector3 movement = new Vector3(0, 0, moveSpeed) * 0.002f;
