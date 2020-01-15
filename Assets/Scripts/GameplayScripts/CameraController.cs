@@ -19,7 +19,7 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = transform.parent.gameObject;
-        Screen.lockCursor = true;
+       // Screen.lockCursor = true;
     }
 
     private void Update()
