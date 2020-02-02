@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,14 +13,10 @@ public class ObjectivesTracker : MonoBehaviour
     private PlayerMoverScript speedController;
     private Canvas scoreSummary;
     private GameObject scoreSummaryObject;
-    //Lap tracker
+
     private int currentLap = 0;
-
     private const int totalLaps = 2;
-
-    //Nitro
     private float nitro = 0.0f;
-
     private bool nitroActivate = false;
 
     [SerializeField] private Slider slider;
@@ -38,6 +35,8 @@ public class ObjectivesTracker : MonoBehaviour
         scoreSummary = scoreSummaryObject.GetComponent<Canvas>();
         scoreSummary.renderMode = RenderMode.ScreenSpaceOverlay;
         scoreSummaryObject.SetActive(false);
+        //
+
     }
 
     public void activateNitro()
@@ -94,6 +93,13 @@ public class ObjectivesTracker : MonoBehaviour
         if (currentLap > totalLaps)
         {
             scoreSummaryObject.SetActive(true);
+
+            GameObject tempGo = GameObject.Find("TimingText");
+            TextMeshProUGUI timingText = tempGo.GetComponent<TextMeshProUGUI>();
+            tempGo = GameObject.Find("TimerText");
+            TextMeshProUGUI raceTimerText = tempGo.GetComponent<TextMeshProUGUI>();
+
+            timingText.text = raceTimerText.text;
         }
         else
         {
