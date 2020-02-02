@@ -36,14 +36,10 @@ public class TimerScript : MonoBehaviour
         int seconds;
         double miliseconds;
 
-        if (timer >= 60)
-        {
-            minutes += 1;
-            timer = 0;
-        }
+        minutes = (int)objectivesTracker.getElapsedTime() / 60;
 
-         seconds = (int)(timer);
-         miliseconds = (timer - seconds) * 100;
+        seconds = (int)(timer) - (minutes * 60);
+        miliseconds = (timer - seconds - minutes * 60) * 100;
 
         if (minutes < 10)
             textmeshPro.text = "0" + minutes.ToString();

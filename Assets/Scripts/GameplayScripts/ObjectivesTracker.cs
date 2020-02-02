@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ObjectivesTracker : MonoBehaviour
 {
     //Elapsed time tracker
-    private float elapsedTime = 0.0f;
+    private float elapsedTime = 50.0f;
 
     //Reference to player script
     private PlayerMoverScript speedController;
@@ -62,6 +62,11 @@ public class ObjectivesTracker : MonoBehaviour
         return elapsedTime;
     }
 
+    public void resetElapsedTime()
+    {
+        elapsedTime = 0;
+    }
+
     public float getNitro()
     {
         return nitro;
@@ -99,10 +104,14 @@ public class ObjectivesTracker : MonoBehaviour
             tempGo = GameObject.Find("TimerText");
             TextMeshProUGUI raceTimerText = tempGo.GetComponent<TextMeshProUGUI>();
 
-            timingText.text = raceTimerText.text;
+            timingText.text = "Timing : " + raceTimerText.text;
+
+            Time.timeScale = 0;
         }
         else
         {
+            Time.timeScale = 1;
+
             elapsedTime += Time.deltaTime;
 
             if (nitro < 1.0f)
