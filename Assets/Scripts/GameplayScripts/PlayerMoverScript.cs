@@ -20,6 +20,8 @@ public class PlayerMoverScript : MonoBehaviour
 
     private RawImage windImage;
 
+    private bool breaking = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +38,14 @@ public class PlayerMoverScript : MonoBehaviour
 
         windImage = tempGo.GetComponent<RawImage>();
         windImage.enabled = false;
+    }
+
+    public void slowDown()
+    {
+        breaking = true;
+
+            moveSpeed -= 1.5f;
+        Debug.Log("Breaking ! ");
     }
 
     // Update is called once per frame
@@ -75,9 +85,7 @@ public class PlayerMoverScript : MonoBehaviour
         //W & S Key , Up & Down Arrow input
         float verticalAxis = Input.GetAxisRaw("Vertical");
 
-        if (verticalAxis < 0)
-            moveSpeed -= 1.5f;
-        else if (verticalAxis >= 0)
+        if (verticalAxis >= 0 && breaking == false)
         {
             if (moveSpeed < 200)
             {
