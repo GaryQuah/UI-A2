@@ -11,7 +11,6 @@ public class PlayerMoverScript : MonoBehaviour
     [SerializeField] private float rayCastDistance = 1.0f;
     [SerializeField] private float jumpForce = 10.0f;
 
-    //RigidBody
     private Rigidbody rigidbody;
 
     private GameObject objectivesTrackerObject;
@@ -89,13 +88,13 @@ public class PlayerMoverScript : MonoBehaviour
         {
             if (moveSpeed < 200)
             {
-                moveSpeed += 1.0f;
+                moveSpeed += 30.0f * Time.deltaTime;
 
                 objectivesTracker.setNitroActive(false);
                 windImage.enabled = false;
             }
             else
-                moveSpeed -= 0.1f;
+                moveSpeed -= 30.0f * Time.deltaTime;
 
             if (moveSpeed > 240)
                 moveSpeed = 240;
