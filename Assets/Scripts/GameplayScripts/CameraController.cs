@@ -31,7 +31,8 @@ public class CameraController : MonoBehaviour
     private void RotateCamera()
     {
         //Get input from mouse.
-        Vector2 inputValues = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
+        Vector2 inputValues = new Vector2(Input.acceleration.x * 100 * Time.deltaTime,
+                                            Input.acceleration.y * 100 * Time.deltaTime);
 
         //Scale input from mouse according to sensitivity settings
         inputValues = Vector2.Scale(inputValues, new Vector2(lookSensitivity * smoothingHorizontal, lookSensitivity * smoothingVertical));

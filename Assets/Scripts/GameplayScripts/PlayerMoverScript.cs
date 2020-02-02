@@ -40,19 +40,12 @@ public class PlayerMoverScript : MonoBehaviour
         windImage.enabled = false;
     }
 
-
     public void slowDown()
     {
         breaking = true;
 
             moveSpeed -= 1.5f;
         Debug.Log("Breaking ! ");
-    }
-
-
-    public void nitroBoost()
-    {
-
     }
 
     // Update is called once per frame
@@ -92,7 +85,6 @@ public class PlayerMoverScript : MonoBehaviour
         //W & S Key , Up & Down Arrow input
         float verticalAxis = Input.GetAxisRaw("Vertical");
 
-      
         if (verticalAxis >= 0 && breaking == false)
         {
             if (moveSpeed < 200)

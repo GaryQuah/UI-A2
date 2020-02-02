@@ -1,14 +1,16 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class LeftScreenControl : MonoBehaviour , IPointerDownHandler , IPointerUpHandler
+public class RightScreenControl : MonoBehaviour 
 {
     private GameObject objectivesTrackerObject;
     private ObjectivesTracker objectivesTracker;
     private PlayerMoverScript speedController;
     private GameObject player;
+    private Button button;
 
     private bool pointerDown = false;
 
@@ -20,23 +22,20 @@ public class LeftScreenControl : MonoBehaviour , IPointerDownHandler , IPointerU
         objectivesTracker = objectivesTrackerObject.GetComponent<ObjectivesTracker>();
         player = GameObject.Find("RaceCar");
         speedController = player.GetComponent<PlayerMoverScript>();
+
+
+        button = GetComponent<Button>();
+        button.onClick.AddListener(nitro);
     }
 
-    public void OnPointerDown(PointerEventData data)
+    public void nitro()
     {
-        pointerDown = true;
-    }
-
-    public void OnPointerUp(PointerEventData data)
-    {
-        pointerDown = false;
+        if (objectivesTracker.getNitro() >= 0.25f)
+            objectivesTracker.activateNitro();
     }
 
     public void Update()
     {
-        if (pointerDown)
-        {
-            speedController.addToSpeed(-100.0f * Time.deltaTime);
-        }
+       
     }
 }
