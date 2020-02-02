@@ -11,7 +11,6 @@ public class PlayerMoverScript : MonoBehaviour
     [SerializeField] private float rayCastDistance = 1.0f;
     [SerializeField] private float jumpForce = 10.0f;
 
-    //RigidBody
     private Rigidbody rigidbody;
 
     private GameObject objectivesTrackerObject;
@@ -19,6 +18,8 @@ public class PlayerMoverScript : MonoBehaviour
     private ObjectivesTracker objectivesTracker;
 
     private RawImage windImage;
+
+    private bool breaking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,14 @@ public class PlayerMoverScript : MonoBehaviour
 
         windImage = tempGo.GetComponent<RawImage>();
         windImage.enabled = false;
+    }
+
+    public void slowDown()
+    {
+        breaking = true;
+
+            moveSpeed -= 1.5f;
+        Debug.Log("Breaking ! ");
     }
 
     // Update is called once per frame
@@ -75,19 +84,17 @@ public class PlayerMoverScript : MonoBehaviour
         //W & S Key , Up & Down Arrow input
         float verticalAxis = Input.GetAxisRaw("Vertical");
 
-        if (verticalAxis < 0)
-            moveSpeed -= 1.5f;
-        else if (verticalAxis >= 0)
+        if (verticalAxis >= 0 && breaking == false)
         {
             if (moveSpeed < 200)
             {
-                moveSpeed += 1.0f;
+                moveSpeed += 30.0f * Time.deltaTime;
 
                 objectivesTracker.setNitroActive(false);
                 windImage.enabled = false;
             }
             else
-                moveSpeed -= 0.1f;
+                moveSpeed -= 30.0f * Time.deltaTime;
 
             if (moveSpeed > 240)
                 moveSpeed = 240;
