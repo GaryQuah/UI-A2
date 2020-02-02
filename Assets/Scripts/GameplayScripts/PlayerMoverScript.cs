@@ -94,7 +94,7 @@ public class PlayerMoverScript : MonoBehaviour
                 windImage.enabled = false;
             }
             else
-                moveSpeed -= 30.0f * Time.deltaTime;
+                moveSpeed -= 15.0f * Time.deltaTime;
 
             if (moveSpeed > 240)
                 moveSpeed = 240;
