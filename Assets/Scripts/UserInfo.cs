@@ -7,12 +7,12 @@ public class UserInfo : MonoBehaviour
 {
     public string Username;
     public string Password;
-    public int Level;
-    public int DiamondCount;
+    public int Level = 1;
+    public int DiamondCount = 10;
 
     //Car
-    public int CarType;
-    public int WheelType;
+    public int CarType = 1;
+    public int WheelType = 1;
 
     //Setters
     public void SetUsername(string name)
