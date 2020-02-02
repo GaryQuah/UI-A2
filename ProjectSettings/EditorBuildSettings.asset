@@ -20,4 +20,16 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CustomisationScene.unity
     guid: 544a59a10303e9441960e039951e23d0
+  - enabled: 1
+    path: Assets/Scenes/LoadingScene.unity
+    guid: 95b0602aa69736142802625434023568
+  - enabled: 1
+    path: Assets/Scenes/GameplayLoadingScene.unity
+    guid: ac75acd97a517574ea64003f5767b73d
+  - enabled: 1
+    path: Assets/Scenes/GameplayScene.unity
+    guid: aaf7442686cb1e14e9415c774e9cb20a
+  - enabled: 1
+    path: Assets/Scenes/PauseScene.unity
+    guid: e83ede15bc43e4742bbfda0eab56b0bb
   m_configObjects: {}
