@@ -10,11 +10,12 @@ public class ObjectivesTracker : MonoBehaviour
 
     //Reference to player script
     private PlayerMoverScript speedController;
-
+    private Canvas scoreSummary;
+    private GameObject scoreSummaryObject;
     //Lap tracker
     private int currentLap = 0;
 
-    private const int totalLaps = 5;
+    private const int totalLaps = 2;
 
     //Nitro
     private float nitro = 0.0f;
@@ -32,6 +33,11 @@ public class ObjectivesTracker : MonoBehaviour
         player = GameObject.Find("RaceCar");
 
         speedController = player.GetComponent<PlayerMoverScript>();
+
+        scoreSummaryObject = GameObject.Find("ScoreSummary");
+        scoreSummary = scoreSummaryObject.GetComponent<Canvas>();
+        scoreSummary.renderMode = RenderMode.ScreenSpaceOverlay;
+        scoreSummaryObject.SetActive(false);
     }
 
     public void activateNitro()
@@ -85,13 +91,20 @@ public class ObjectivesTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        elapsedTime += Time.deltaTime;
-
-        if (nitro < 1.0f)
-            nitro += 0.05f * (float)(Time.deltaTime);
+        if (currentLap > totalLaps)
+        {
+            scoreSummaryObject.SetActive(true);
+        }
         else
-            nitro = 1.0f;
+        {
+            elapsedTime += Time.deltaTime;
 
-        slider.value = nitro;
+            if (nitro < 1.0f)
+                nitro += 0.05f * (float)(Time.deltaTime);
+            else
+                nitro = 1.0f;
+
+            slider.value = nitro;
+        }
     }
 }
