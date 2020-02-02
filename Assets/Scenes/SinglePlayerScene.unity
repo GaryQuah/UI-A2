@@ -4054,7 +4054,7 @@ PrefabInstance:
     - target: {fileID: 6745265031179710334, guid: 0ec6cee30fbc91d4b8d2703d835aec7c,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: LoadingScene
+      value: GameplayLoadingScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ec6cee30fbc91d4b8d2703d835aec7c, type: 3}
