@@ -9,6 +9,10 @@ public class UIClampToWorld : MonoBehaviour
 
     private Canvas theCanavs;
 
+    private GameObject objectivesTrackerObject;
+
+    private ObjectivesTracker objectivesTracker;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +24,10 @@ public class UIClampToWorld : MonoBehaviour
         theCanavs = tempGo.GetComponent<Canvas>();
 
         theCanavs.renderMode = RenderMode.ScreenSpaceOverlay;
+
+        objectivesTrackerObject = GameObject.Find("ObjectivesTracker");
+
+        objectivesTracker = objectivesTrackerObject.GetComponent<ObjectivesTracker>();
     }
 
     // Update is called once per frame
@@ -33,5 +41,10 @@ public class UIClampToWorld : MonoBehaviour
     {
         if (other.name == "RaceCar")
             theCanavs.gameObject.SetActive(false);
+
+        if (objectivesTracker.getCurrentPosition() > 1)
+            objectivesTracker.setCurrentPosition(objectivesTracker.getCurrentPosition() - 1);
+
+        Debug.Log("passed through");
     }
 }

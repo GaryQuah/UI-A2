@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class PositionScript : MonoBehaviour
 {
@@ -20,12 +20,12 @@ public class PositionScript : MonoBehaviour
 
         objectivesTracker = objectivesTrackerObject.GetComponent<ObjectivesTracker>();
 
-        //textmeshPro.text = timer.ToString();
+        textmeshPro.text = objectivesTracker.getTotalPlayers() + " / " + objectivesTracker.getTotalPlayers();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        textmeshPro.text = objectivesTracker.getCurrentPosition() + " / " + objectivesTracker.getTotalPlayers();
     }
 }
