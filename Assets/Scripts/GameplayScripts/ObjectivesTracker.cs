@@ -14,6 +14,9 @@ public class ObjectivesTracker : MonoBehaviour
     private Canvas scoreSummary;
     private GameObject scoreSummaryObject;
 
+    private int totalPlayers = 2;
+    private int currentPosition;
+
     private int currentLap = 0;
     private const int totalLaps = 2;
     private float nitro = 0.0f;
@@ -36,7 +39,22 @@ public class ObjectivesTracker : MonoBehaviour
         scoreSummary.renderMode = RenderMode.ScreenSpaceOverlay;
         scoreSummaryObject.SetActive(false);
         //
+        currentPosition = totalPlayers;
+    }
 
+    public int getTotalPlayers()
+    {
+        return totalPlayers;
+    }
+
+    public int getCurrentPosition()
+    {
+        return currentPosition;
+    }
+
+    public void setCurrentPosition(int value)
+    {
+        currentPosition = value;
     }
 
     public void activateNitro()
