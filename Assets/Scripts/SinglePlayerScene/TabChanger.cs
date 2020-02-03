@@ -16,4 +16,9 @@ public class TabChanger : MonoBehaviour
     {
         
     }
+
+    public void SetActive()
+    {
+
+    }
 }
