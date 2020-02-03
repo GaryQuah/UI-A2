@@ -6,9 +6,8 @@ using UnityEngine.UI;
 public class UserInfo : MonoBehaviour
 {
     public string Username;
-    public string Password;
     public int Level = 1;
-    public int DiamondCount = 10;
+    public int DiamondCount = 199;
 
     //Car
     public int CarType = 1;
@@ -18,10 +17,6 @@ public class UserInfo : MonoBehaviour
     public void SetUsername(string name)
     {
         Username = name;
-    }
-    public void SetPassword(string password)
-    {
-        Password = password;
     }
     public void SetCarType(int cartype)
     {
@@ -43,11 +38,6 @@ public class UserInfo : MonoBehaviour
     public string GetUserName()
     {
         return Username;
-    
-    }
-    public string GetPassword()
-    {
-        return Password;
     }
     public int GetCarType()
     {
