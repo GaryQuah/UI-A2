@@ -7,4 +7,13 @@ public class TabChanger : MonoBehaviour
 {
     int Tab;
 
+    void Start()
+    {
+        
+    }
+
+    private void Update()
+    {
+        
+    }
 }
