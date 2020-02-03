@@ -43,7 +43,7 @@ public class PauseButton : MonoBehaviour
     {
         isPaused = true;
         Time.timeScale = 0;
-        Debug.Log("button pressed");
+        Debug.Log("pause pressed");
     }
 
     // Update is called once per frame

@@ -10,7 +10,6 @@ public class ProfilePageController : MonoBehaviour
     [SerializeField] Button statisticsButton;
     [SerializeField] Button backButton;
 
-    private string currentButton = "personalButton";
     [SerializeField] Image personalImage;
     [SerializeField] Image statisticsImage;
 
@@ -33,7 +32,6 @@ public class ProfilePageController : MonoBehaviour
 
     public void personalButtonEvent()
     {
-        currentButton = "personalButton";
         personalImage.gameObject.SetActive(true);
         statisticsImage.gameObject.SetActive(false);
         Debug.Log("personal clicked");
@@ -44,7 +42,6 @@ public class ProfilePageController : MonoBehaviour
 
     public void statisticsButtonEvent()
     {
-        currentButton = "statisticsButton";
         statisticsImage.gameObject.SetActive(true);
         personalImage.gameObject.SetActive(false);
         Debug.Log("statistics clicked");

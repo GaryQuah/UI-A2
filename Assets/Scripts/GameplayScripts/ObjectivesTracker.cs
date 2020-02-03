@@ -110,8 +110,6 @@ public class ObjectivesTracker : MonoBehaviour
         }
         else
         {
-            Time.timeScale = 1;
-
             elapsedTime += Time.deltaTime;
 
             if (nitro < 1.0f)
