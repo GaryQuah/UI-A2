@@ -470,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -450.0092, y: -225.30664}
+  m_AnchoredPosition: {x: -492, y: -225.30664}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &103759948
@@ -955,8 +955,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 1, g: 0.46689767, b: 0, a: 1}
-    m_SelectedColor: {r: 1, g: 0.6137143, b: 0, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 1, g: 1, b: 1, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -998,7 +998,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 98620085e69e57045a9ade303878da71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a38b1a06dd39d943b3d76d20ff09cc9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2390,6 +2390,7 @@ GameObject:
   - component: {fileID: 1347392822}
   - component: {fileID: 1347392821}
   - component: {fileID: 1347392820}
+  - component: {fileID: 1347392824}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2479,6 +2480,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1347392824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1347392819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c24fbe4b29bad54286a234cc3d748d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StoryBtn: {fileID: 572849849}
+  TimetrialBtn: {fileID: 1064241421}
+  Level1Btn: {fileID: 1374233820}
+  Level2Btn: {fileID: 1101919081}
+  Level3Btn: {fileID: 737395542}
+  Level4Btn: {fileID: 833565635}
+  Map: {fileID: 1597105073}
+  NotSelectedSprite: {fileID: 21300000, guid: 98620085e69e57045a9ade303878da71, type: 3}
+  SelectedSprite: {fileID: 21300000, guid: 8a38b1a06dd39d943b3d76d20ff09cc9, type: 3}
+  Map1: {fileID: 21300000, guid: 749d84cf0ef7e004587a0f582c04036e, type: 3}
+  Map2: {fileID: 21300000, guid: ae0c776df4ac74740b32c6bedc2a398f, type: 3}
+  Map3: {fileID: 21300000, guid: d5064637c5786e143826368e21ea1596, type: 3}
+  Map4: {fileID: 21300000, guid: 769aa49790e7d1c4c971e26aab53c6c5, type: 3}
 --- !u!1 &1374233818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2583,7 +2609,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 98620085e69e57045a9ade303878da71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8a38b1a06dd39d943b3d76d20ff09cc9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2810,7 +2836,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -276.40918, y: -225.30664}
+  m_AnchoredPosition: {x: -318.40005, y: -225.30664}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1442848309
@@ -2968,7 +2994,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 147.59082, y: 224.69336}
+  m_AnchoredPosition: {x: 131, y: 224.69336}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1484354291
@@ -3169,7 +3195,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -276.40918, y: 42.69336}
+  m_AnchoredPosition: {x: -318.40005, y: 42.69336}
   m_SizeDelta: {x: 2048, y: 1536}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1597105075
