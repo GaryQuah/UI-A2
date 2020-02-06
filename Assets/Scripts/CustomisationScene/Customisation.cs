@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor;
 
 public class Customisation : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class Customisation : MonoBehaviour
     [SerializeField] GameObject Equiped;
     [SerializeField] GameObject Owned;
 
-    [SerializeField] GameObject CarImage;
+    [SerializeField] GameObject Image;
     //Sprites
     [SerializeField] Sprite Car1;
     [SerializeField] Sprite Car2;
@@ -36,7 +37,7 @@ public class Customisation : MonoBehaviour
     [SerializeField] Sprite Wheel2;
     [SerializeField] Sprite Wheel3;
     [SerializeField] Sprite Wheel4;
-    
+
     [SerializeField] Sprite Engine1;
     [SerializeField] Sprite Engine2;
     [SerializeField] Sprite Engine3;
@@ -56,12 +57,27 @@ public class Customisation : MonoBehaviour
 
         RightArrowBtn.onClick.AddListener(RightArrowButtonEvent);
         LeftArrowBtn.onClick.AddListener(LeftArrowButtonEvent);
+
         BuyBtn.onClick.AddListener(BuyButtonEvent);
+        EquipBtn.onClick.AddListener(EquipButtonEvent);
+
+        if (user.OwnedCar.Count == 0)
+        {
+            user.OwnedCar.Add(user.CarType);
+        }
+        if (user.OwnedWheel.Count == 0)
+        {
+            user.OwnedWheel.Add(user.WheelType);
+        }
+        if (user.OwnedEngine.Count == 0)
+        {
+            user.OwnedEngine.Add(user.WheelType);
+        }
     }
 
     void Update()
     {
-        
+
     }
 
     public void CarButtonEvent()
@@ -69,27 +85,70 @@ public class Customisation : MonoBehaviour
         CarBtn.GetComponent<Image>().sprite = SelectedSprite;
         WheelBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         EngineBtn.GetComponent<Image>().sprite = NotSelectedSprite;
+        Image.GetComponent<Image>().sprite = Car1;
     }
-    
+
     public void WheelButtonEvent()
     {
         WheelBtn.GetComponent<Image>().sprite = SelectedSprite;
         CarBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         EngineBtn.GetComponent<Image>().sprite = NotSelectedSprite;
+
+        Image.GetComponent<Image>().sprite = Wheel1;
     }
-    
+
     public void EngineButtonEvent()
     {
         EngineBtn.GetComponent<Image>().sprite = SelectedSprite;
         WheelBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         CarBtn.GetComponent<Image>().sprite = NotSelectedSprite;
     }
+    public void EquipButtonEvent()
+    {
+        if (CarBtn.GetComponent<Image>().sprite == SelectedSprite)
+        {
+            user.CarType = i;
+        }
+        else if (WheelBtn.GetComponent<Image>().sprite == SelectedSprite)
+        {
+            user.WheelType = i;
+        }
+        else if (EngineBtn.GetComponent<Image>().sprite == SelectedSprite)
+        {
+            user.EngineType = i;
+        }
+
+        EquipBtn.gameObject.SetActive(false);
+        Equiped.gameObject.SetActive(true);
+    }
     public void BuyButtonEvent()
     {
+
         if (user.DiamondCount >= Diamondcost)
         {
             user.DiamondCount = user.DiamondCount - Diamondcost;
+            if (CarBtn.GetComponent<Image>().sprite == SelectedSprite)
+            {
+                user.OwnedCar.Add(i);
+            }
+            else if (WheelBtn.GetComponent<Image>().sprite == SelectedSprite)
+            {
+                user.OwnedWheel.Add(i);
+            }
+            else if (EngineBtn.GetComponent<Image>().sprite == SelectedSprite)
+            {
+                user.OwnedEngine.Add(i);
+            }
+
+            BuyBtn.gameObject.SetActive(false);
+            EquipBtn.gameObject.SetActive(true);
+            Owned.gameObject.SetActive(true);
         }
+        else
+        {
+            EditorUtility.DisplayDialog("Not enough Diamonds.", "Red Text indicates that you dont have enough Diamond!", "Ok");
+        }
+
     }
     public void RightArrowButtonEvent()
     {
@@ -103,47 +162,131 @@ public class Customisation : MonoBehaviour
 
         bool b_Owned = false;
 
-        for(int j = 0; j < user.OwnedCar.Length; ++j)
+        if (CarBtn.GetComponent<Image>().sprite == SelectedSprite)
         {
-            if(user.OwnedCar[j] == i)
+            b_Owned = user.OwnedCar.Contains(i);
+
+            if (b_Owned)
             {
                 Owned.gameObject.SetActive(true);
-                b_Owned = true;
-                if (user.CarType != i)
+                if (user.CarType == i)
+                {
+                    Equiped.gameObject.SetActive(true);
+                }
+                else if (user.CarType != i)
                 {
                     EquipBtn.gameObject.SetActive(true);
                 }
-                break;
+            }
+            else if (!b_Owned)
+            {
+                BuyBtn.gameObject.SetActive(true);
+            }
+
+
+            switch (i)
+            {
+                case 0:
+                    Image.GetComponent<Image>().sprite = Car1;
+                    Diamondcost = 35;
+                    break;
+                case 1:
+                    Image.GetComponent<Image>().sprite = Car2;
+                    Diamondcost = 45;
+                    break;
+                case 2:
+                    Image.GetComponent<Image>().sprite = Car3;
+                    Diamondcost = 155;
+                    break;
+                case 3:
+                    Image.GetComponent<Image>().sprite = Car4;
+                    Diamondcost = 205;
+                    break;
             }
         }
-        if (!b_Owned)
+        else if (WheelBtn.GetComponent<Image>().sprite == SelectedSprite)
         {
-            BuyBtn.gameObject.SetActive(true);
+            b_Owned = user.OwnedWheel.Contains(i);
+
+            if (b_Owned)
+            {
+                Owned.gameObject.SetActive(true);
+                if (user.WheelType == i)
+                {
+                    Equiped.gameObject.SetActive(true);
+                }
+                else if (user.WheelType != i)
+                {
+                    EquipBtn.gameObject.SetActive(true);
+                }
+            }
+            else if (!b_Owned)
+            {
+                BuyBtn.gameObject.SetActive(true);
+            }
+
+            switch (i)
+            {
+                case 0:
+                    Image.GetComponent<Image>().sprite = Wheel1;
+                    Diamondcost = 35;
+                    break;
+                case 1:
+                    Image.GetComponent<Image>().sprite = Wheel2;
+                    Diamondcost = 45;
+                    break;
+                case 2:
+                    Image.GetComponent<Image>().sprite = Wheel3;
+                    Diamondcost = 55;
+                    break;
+                case 3:
+                    Image.GetComponent<Image>().sprite = Wheel4;
+                    Diamondcost = 155;
+                    break;
+            }
         }
-        if (user.CarType == i)
+        else if (EngineBtn.GetComponent<Image>().sprite == SelectedSprite)
         {
-            Equiped.gameObject.SetActive(true);
+            b_Owned = user.OwnedEngine.Contains(i);
+
+            if (b_Owned)
+            {
+                Owned.gameObject.SetActive(true);
+                if (user.EngineType == i)
+                {
+                    Equiped.gameObject.SetActive(true);
+                }
+                else if (user.EngineType != i)
+                {
+                    EquipBtn.gameObject.SetActive(true);
+                }
+            }
+            else if (!b_Owned)
+            {
+                BuyBtn.gameObject.SetActive(true);
+            }
+
+            switch (i)
+            {
+                case 0:
+                    Image.GetComponent<Image>().sprite = Wheel1;
+                    Diamondcost = 35;
+                    break;
+                case 1:
+                    Image.GetComponent<Image>().sprite = Wheel2;
+                    Diamondcost = 45;
+                    break;
+                case 2:
+                    Image.GetComponent<Image>().sprite = Wheel3;
+                    Diamondcost = 55;
+                    break;
+                case 3:
+                    Image.GetComponent<Image>().sprite = Wheel4;
+                    Diamondcost = 155;
+                    break;
+            }
         }
-        
-        switch (i)
-        {
-            case 0:
-                CarImage.GetComponent<Image>().sprite = Car1;
-                Diamondcost = 35;
-                break;
-            case 1:
-                CarImage.GetComponent<Image>().sprite = Car2;
-                Diamondcost = 45;
-                break;
-            case 2:
-                CarImage.GetComponent<Image>().sprite = Car3;
-                Diamondcost = 55;
-                break;
-            case 3:
-                CarImage.GetComponent<Image>().sprite = Car4;
-                Diamondcost = 205;
-                break;
-        }
+
         if (BuyBtn.enabled)
             SetTextColor();
     }
@@ -159,46 +302,129 @@ public class Customisation : MonoBehaviour
 
         bool b_Owned = false;
 
-        for (int j = 0; j < user.OwnedCar.Length; ++j)
+        if (CarBtn.GetComponent<Image>().sprite == SelectedSprite)
         {
-            if (user.OwnedCar[j] == i)
+            b_Owned = user.OwnedCar.Contains(i);
+
+            if (b_Owned)
             {
                 Owned.gameObject.SetActive(true);
-                b_Owned = true;
-                if (user.CarType != i)
+                if (user.CarType == i)
+                {
+                    Equiped.gameObject.SetActive(true);
+                }
+                else if (user.CarType != i)
                 {
                     EquipBtn.gameObject.SetActive(true);
                 }
-                break;
+            }
+            else if (!b_Owned)
+            {
+                BuyBtn.gameObject.SetActive(true);
+            }
+
+
+            switch (i)
+            {
+                case 0:
+                    Image.GetComponent<Image>().sprite = Car1;
+                    Diamondcost = 35;
+                    break;
+                case 1:
+                    Image.GetComponent<Image>().sprite = Car2;
+                    Diamondcost = 45;
+                    break;
+                case 2:
+                    Image.GetComponent<Image>().sprite = Car3;
+                    Diamondcost = 55;
+                    break;
+                case 3:
+                    Image.GetComponent<Image>().sprite = Car4;
+                    Diamondcost = 205;
+                    break;
             }
         }
-        if (!b_Owned)
+        else if (WheelBtn.GetComponent<Image>().sprite == SelectedSprite)
         {
-            BuyBtn.gameObject.SetActive(true);
-        }
-        if (user.CarType == i)
-        {
-            Equiped.gameObject.SetActive(true);
-        }
+            b_Owned = user.OwnedWheel.Contains(i);
 
-        switch (i)
+            if (b_Owned)
+            {
+                Owned.gameObject.SetActive(true);
+                if (user.WheelType == i)
+                {
+                    Equiped.gameObject.SetActive(true);
+                }
+                else if (user.WheelType != i)
+                {
+                    EquipBtn.gameObject.SetActive(true);
+                }
+            }
+            else if (!b_Owned)
+            {
+                BuyBtn.gameObject.SetActive(true);
+            }
+
+            switch (i)
+            {
+                case 0:
+                    Image.GetComponent<Image>().sprite = Wheel1;
+                    Diamondcost = 35;
+                    break;
+                case 1:
+                    Image.GetComponent<Image>().sprite = Wheel2;
+                    Diamondcost = 45;
+                    break;
+                case 2:
+                    Image.GetComponent<Image>().sprite = Wheel3;
+                    Diamondcost = 55;
+                    break;
+                case 3:
+                    Image.GetComponent<Image>().sprite = Wheel4;
+                    Diamondcost = 155;
+                    break;
+            }
+        }
+        else if (EngineBtn.GetComponent<Image>().sprite == SelectedSprite)
         {
-            case 0:
-                CarImage.GetComponent<Image>().sprite = Car1;
-                Diamondcost = 35;
-                break;
-            case 1:
-                CarImage.GetComponent<Image>().sprite = Car2;
-                Diamondcost = 45;
-                break;
-            case 2:
-                CarImage.GetComponent<Image>().sprite = Car3;
-                Diamondcost = 55;
-                break;
-            case 3:
-                CarImage.GetComponent<Image>().sprite = Car4;
-                Diamondcost = 205;
-                break;
+            b_Owned = user.OwnedEngine.Contains(i);
+
+            if (b_Owned)
+            {
+                Owned.gameObject.SetActive(true);
+                if (user.EngineType == i)
+                {
+                    Equiped.gameObject.SetActive(true);
+                }
+                else if (user.EngineType != i)
+                {
+                    EquipBtn.gameObject.SetActive(true);
+                }
+            }
+            else if (!b_Owned)
+            {
+                BuyBtn.gameObject.SetActive(true);
+            }
+
+            switch (i)
+            {
+                case 0:
+                    Image.GetComponent<Image>().sprite = Wheel1;
+                    Diamondcost = 35;
+                    break;
+                case 1:
+                    Image.GetComponent<Image>().sprite = Wheel2;
+                    Diamondcost = 45;
+                    break;
+                case 2:
+                    Image.GetComponent<Image>().sprite = Wheel3;
+                    Diamondcost = 55;
+                    break;
+                case 3:
+                    Image.GetComponent<Image>().sprite = Wheel4;
+                    Diamondcost = 155;
+                    break;
+            }
         }
         if (BuyBtn.enabled)
             SetTextColor();
@@ -213,4 +439,4 @@ public class Customisation : MonoBehaviour
 
 
 
-    }
+}

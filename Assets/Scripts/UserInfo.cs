@@ -14,7 +14,10 @@ public class UserInfo
     public int WheelType = 0;
     public int EngineType = 0;
 
-    public int[] OwnedCar = {0,1, };
+    public List<int> OwnedCar = new List<int>();
+    public List<int> OwnedWheel = new List<int>();
+    public List<int> OwnedEngine = new List<int>();
+
     //Setters
     public void SetUsername(string name)
     {
