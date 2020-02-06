@@ -49,6 +49,7 @@ public class Customisation : MonoBehaviour
     UserInfo user = new UserInfo();
     int Diamondcost;
     int i = 0;
+    UpdateUserInfo UpdateUser;
     void Start()
     {
         CarBtn.onClick.AddListener(CarButtonEvent);
@@ -102,6 +103,7 @@ public class Customisation : MonoBehaviour
         EngineBtn.GetComponent<Image>().sprite = SelectedSprite;
         WheelBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         CarBtn.GetComponent<Image>().sprite = NotSelectedSprite;
+        Image.GetComponent<Image>().sprite = Engine1;
     }
     public void EquipButtonEvent()
     {
@@ -127,6 +129,7 @@ public class Customisation : MonoBehaviour
         if (user.DiamondCount >= Diamondcost)
         {
             user.DiamondCount = user.DiamondCount - Diamondcost;
+            
             if (CarBtn.GetComponent<Image>().sprite == SelectedSprite)
             {
                 user.OwnedCar.Add(i);
@@ -269,19 +272,19 @@ public class Customisation : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    Image.GetComponent<Image>().sprite = Wheel1;
+                    Image.GetComponent<Image>().sprite = Engine1;
                     Diamondcost = 35;
                     break;
                 case 1:
-                    Image.GetComponent<Image>().sprite = Wheel2;
+                    Image.GetComponent<Image>().sprite = Engine2;
                     Diamondcost = 45;
                     break;
                 case 2:
-                    Image.GetComponent<Image>().sprite = Wheel3;
+                    Image.GetComponent<Image>().sprite = Engine3;
                     Diamondcost = 55;
                     break;
                 case 3:
-                    Image.GetComponent<Image>().sprite = Wheel4;
+                    Image.GetComponent<Image>().sprite = Engine4;
                     Diamondcost = 155;
                     break;
             }
@@ -409,19 +412,19 @@ public class Customisation : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    Image.GetComponent<Image>().sprite = Wheel1;
+                    Image.GetComponent<Image>().sprite = Engine1;
                     Diamondcost = 35;
                     break;
                 case 1:
-                    Image.GetComponent<Image>().sprite = Wheel2;
+                    Image.GetComponent<Image>().sprite = Engine2;
                     Diamondcost = 45;
                     break;
                 case 2:
-                    Image.GetComponent<Image>().sprite = Wheel3;
+                    Image.GetComponent<Image>().sprite = Engine3;
                     Diamondcost = 55;
                     break;
                 case 3:
-                    Image.GetComponent<Image>().sprite = Wheel4;
+                    Image.GetComponent<Image>().sprite = Engine4;
                     Diamondcost = 155;
                     break;
             }
