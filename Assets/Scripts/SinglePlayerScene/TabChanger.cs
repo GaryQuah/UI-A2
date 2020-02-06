@@ -24,6 +24,8 @@ public class TabChanger : MonoBehaviour
     [SerializeField] Sprite Map3;
     [SerializeField] Sprite Map4;
 
+    public UserInfo user;
+
     void Start()
     {
         StoryBtn.onClick.AddListener(StoryButtonEvent);

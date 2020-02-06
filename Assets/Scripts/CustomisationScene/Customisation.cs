@@ -45,11 +45,10 @@ public class Customisation : MonoBehaviour
 
     // CarStats
 
+    public UserInfo user;
 
-    UserInfo user = new UserInfo();
     int Diamondcost;
     int i = 0;
-    UpdateUserInfo UpdateUser;
     void Start()
     {
         CarBtn.onClick.AddListener(CarButtonEvent);
