@@ -3,26 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using TMPro;
+
 public class Login : MonoBehaviour
 {
-    public GameObject canvas;
-    private InputField username;
-    Text input;
-
-    UserInfo user;
+    [SerializeField] TextMeshProUGUI usernameset;
+    string text = "";
+    //  UserInfo user;
     private void Start()
     {
-        input = canvas.transform.Find("Username Input/Text").GetComponent<Text>();
+
     }
-    public void LoginButton()
+    public void SetText()
     {
-        if (username != null)
-        {
-            user.SetUsername(input.text);
-        }
-       
-        SceneManager.LoadScene("Mainmenuscene");
-
+        // text = username.GetComponents<TextMeshProUGUI>().
+        text = usernameset.text.ToString();
+        Debug.Log(text);
     }
 
+    public string getname()
+    {
+        return text;
+    }
+    public void LoginButtonEvent()
+    {
+        SceneManager.LoadScene("MainmenuScene");
+    }
 }
