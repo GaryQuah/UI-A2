@@ -7,15 +7,16 @@ using UnityEngine.UI;
 public class ObjectivesTracker : MonoBehaviour
 {
     //Elapsed time tracker
-    private float elapsedTime = 50.0f;
+    private float elapsedTime = 0.0f;
 
     //Reference to player script
     private PlayerMoverScript speedController;
     private Canvas scoreSummary;
     private GameObject scoreSummaryObject;
 
-    private int totalPlayers = 2;
     private int currentPosition;
+
+    private int totalPlayers = 2;
 
     private int currentLap = 0;
     private const int totalLaps = 2;
@@ -30,6 +31,8 @@ public class ObjectivesTracker : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
+
         player = GameObject.Find("RaceCar");
 
         speedController = player.GetComponent<PlayerMoverScript>();
@@ -40,7 +43,13 @@ public class ObjectivesTracker : MonoBehaviour
         scoreSummaryObject.SetActive(false);
         //
         currentPosition = totalPlayers;
-    }
+
+         totalPlayers = 2;
+
+         currentLap = 0;
+         nitro = 0.0f;
+         nitroActivate = false;
+      }
 
     public int getTotalPlayers()
     {
