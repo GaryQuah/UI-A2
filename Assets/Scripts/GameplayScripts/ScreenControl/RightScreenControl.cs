@@ -20,7 +20,7 @@ public class RightScreenControl : MonoBehaviour
         objectivesTrackerObject = GameObject.Find("ObjectivesTracker");
 
         objectivesTracker = objectivesTrackerObject.GetComponent<ObjectivesTracker>();
-        player = GameObject.Find("RaceCar");
+        player = GameObject.Find("Player");
         speedController = player.GetComponent<PlayerMoverScript>();
 
 

@@ -20,7 +20,7 @@ public class SpeedometerNeedleHandler : MonoBehaviour
 
         //Get a reference to players rigid body.
 
-        player = GameObject.Find("RaceCar");
+        player = GameObject.Find("Player");
 
         speedController = player.GetComponent<PlayerMoverScript>();
         speed = speedController.getSpeed();
