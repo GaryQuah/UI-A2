@@ -12,6 +12,8 @@ public class TabChanger : MonoBehaviour
 
     [SerializeField] Button Level1Btn;
     [SerializeField] Button Level2Btn;
+    [SerializeField] Button Level3Btn;
+    [SerializeField] Button Level4Btn;
 
     [SerializeField] GameObject Map;
     //Sprite
@@ -33,7 +35,8 @@ public class TabChanger : MonoBehaviour
 
         Level1Btn.onClick.AddListener(Level1ButtonEvent);
         Level2Btn.onClick.AddListener(Level2ButtonEvent);
-    
+        Level3Btn.onClick.AddListener(UnInteracterbleButtonEvent);
+        Level4Btn.onClick.AddListener(UnInteracterbleButtonEvent);
     }
 
     private void Update()
@@ -45,15 +48,22 @@ public class TabChanger : MonoBehaviour
     {
         StoryBtn.GetComponent<Image>().sprite = SelectedSprite;
         TimetrialBtn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level2Btn.interactable = true;
+        Level1ButtonEvent();
+
+        ColorBlock Level2BtnColors = Level2Btn.colors;
+        Level2BtnColors.normalColor = new Color32(255, 255, 255, 255);
+        Level2Btn.colors = Level2BtnColors;
     }
 
     public void TimeTrialButtonEvent()
     {
         TimetrialBtn.GetComponent<Image>().sprite = SelectedSprite;
         StoryBtn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level2Btn.interactable = false;
         Level1ButtonEvent();
+
+        ColorBlock Level2BtnColors = Level2Btn.colors;
+        Level2BtnColors.normalColor = new Color32(200,200,200,200);
+        Level2Btn.colors = Level2BtnColors;
     }
 
     public void Level1ButtonEvent()
@@ -67,13 +77,23 @@ public class TabChanger : MonoBehaviour
     }
     public void Level2ButtonEvent()
     {
-        Level2Btn.GetComponent<Image>().sprite = SelectedSprite;
-        Level1Btn.GetComponent<Image>().sprite = NotSelectedSprite;
+        if (StoryBtn.GetComponent<Image>().sprite == SelectedSprite)
+        {
+            Level2Btn.GetComponent<Image>().sprite = SelectedSprite;
+            Level1Btn.GetComponent<Image>().sprite = NotSelectedSprite;
 
-        Map.GetComponent<Image>().sprite = Map2;
-        objectives.text = "- Get a time faster than 2 mins \n \n - Get 2nd and above \n \n - Do atleast 5 Drifts";
-        timing.text = "-";
-
+            Map.GetComponent<Image>().sprite = Map2;
+            objectives.text = "- Get a time faster than 2 mins \n \n - Get 2nd and above \n \n - Do atleast 5 Drifts";
+            timing.text = "-";
+        }
+        else
+        {
+            Handheld.Vibrate();
+        }
+    }
+    public void UnInteracterbleButtonEvent()
+    {
+            Handheld.Vibrate();
     }
 
 }
