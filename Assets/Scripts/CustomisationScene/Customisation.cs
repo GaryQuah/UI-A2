@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor;
+//using UnityEditor;
 
 public class Customisation : MonoBehaviour
 {
@@ -221,10 +221,10 @@ public class Customisation : MonoBehaviour
             EquipBtn.gameObject.SetActive(true);
             Owned.gameObject.SetActive(true);
         }
-        else
-        {
-            EditorUtility.DisplayDialog("Not enough Diamonds.", "Red Text indicates that you dont have enough Diamond!", "Ok");
-        }
+       // else
+       // {
+            //EditorUtility.DisplayDialog("Not enough Diamonds.", "Red Text indicates that you dont have enough Diamond!", "Ok");
+        //}
 
     }
     public void RightArrowButtonEvent()
