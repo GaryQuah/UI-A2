@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class TabChanger : MonoBehaviour
 {
@@ -11,8 +12,6 @@ public class TabChanger : MonoBehaviour
 
     [SerializeField] Button Level1Btn;
     [SerializeField] Button Level2Btn;
-    [SerializeField] Button Level3Btn;
-    [SerializeField] Button Level4Btn;
 
     [SerializeField] GameObject Map;
     //Sprite
@@ -21,8 +20,11 @@ public class TabChanger : MonoBehaviour
 
     [SerializeField] Sprite Map1;
     [SerializeField] Sprite Map2;
-    [SerializeField] Sprite Map3;
-    [SerializeField] Sprite Map4;
+
+    [SerializeField] TextMeshProUGUI objectives;
+    [SerializeField] TextMeshProUGUI timing;
+
+    public UserInfo user;
 
     void Start()
     {
@@ -31,8 +33,7 @@ public class TabChanger : MonoBehaviour
 
         Level1Btn.onClick.AddListener(Level1ButtonEvent);
         Level2Btn.onClick.AddListener(Level2ButtonEvent);
-        Level3Btn.onClick.AddListener(Level3ButtonEvent);
-        Level4Btn.onClick.AddListener(Level4ButtonEvent);
+    
     }
 
     private void Update()
@@ -44,48 +45,35 @@ public class TabChanger : MonoBehaviour
     {
         StoryBtn.GetComponent<Image>().sprite = SelectedSprite;
         TimetrialBtn.GetComponent<Image>().sprite = NotSelectedSprite;
+        Level2Btn.interactable = true;
     }
 
     public void TimeTrialButtonEvent()
     {
         TimetrialBtn.GetComponent<Image>().sprite = SelectedSprite;
         StoryBtn.GetComponent<Image>().sprite = NotSelectedSprite;
+        Level2Btn.interactable = false;
+        Level1ButtonEvent();
     }
 
     public void Level1ButtonEvent()
     {
         Level1Btn.GetComponent<Image>().sprite = SelectedSprite;
         Level2Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level3Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level4Btn.GetComponent<Image>().sprite = NotSelectedSprite;
 
         Map.GetComponent<Image>().sprite = Map1;
+        objectives.text = "- Get a time faster than 3 mins \n \n - Get 2nd and above \n \n - Do atleast 3 Drifts";
+        timing.text = "2 . 26 . 19";
     }
     public void Level2ButtonEvent()
     {
         Level2Btn.GetComponent<Image>().sprite = SelectedSprite;
         Level1Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level3Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level4Btn.GetComponent<Image>().sprite = NotSelectedSprite;
 
         Map.GetComponent<Image>().sprite = Map2;
-    }
-    public void Level3ButtonEvent()
-    {
-        Level3Btn.GetComponent<Image>().sprite = SelectedSprite;
-        Level1Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level2Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level4Btn.GetComponent<Image>().sprite = NotSelectedSprite;
+        objectives.text = "- Get a time faster than 2 mins \n \n - Get 2nd and above \n \n - Do atleast 5 Drifts";
+        timing.text = "-";
 
-        Map.GetComponent<Image>().sprite = Map3;
     }
-    public void Level4ButtonEvent()
-    {
-        Level4Btn.GetComponent<Image>().sprite = SelectedSprite;
-        Level1Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level2Btn.GetComponent<Image>().sprite = NotSelectedSprite;
-        Level3Btn.GetComponent<Image>().sprite = NotSelectedSprite;
 
-        Map.GetComponent<Image>().sprite = Map4;
-    }
 }

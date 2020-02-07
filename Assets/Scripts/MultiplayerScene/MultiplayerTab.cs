@@ -10,6 +10,8 @@ public class MultiplayerTab : MonoBehaviour
     [SerializeField] GameObject InvitationTab;
     [SerializeField] Button InvitationTabBackBtn;
 
+    public UserInfo user;
+
     void Start()
     {
         InviteBtn.onClick.AddListener(InviteButtonEvent);
