@@ -23,7 +23,9 @@ public class TabChanger : MonoBehaviour
     [SerializeField] Sprite Map1;
     [SerializeField] Sprite Map2;
 
+    [SerializeField] TextMeshProUGUI objectivesCat;
     [SerializeField] TextMeshProUGUI objectives;
+    [SerializeField] TextMeshProUGUI timingCat;
     [SerializeField] TextMeshProUGUI timing;
 
     public UserInfo user;
@@ -74,8 +76,21 @@ public class TabChanger : MonoBehaviour
         Level2Btn.GetComponent<Image>().sprite = NotSelectedSprite;
 
         Map.GetComponent<Image>().sprite = Map1;
-        objectives.text = "- Get a time faster than 3 mins \n \n - Get 2nd and above \n \n - Do atleast 3 Drifts";
-        timing.text = "2 . 26 . 19";
+        if (StoryBtn.GetComponent<Image>().sprite == SelectedSprite)
+        {
+            objectives.text = "- Get a time faster than 3 mins \n \n- Get 2nd and above \n \n- Do atleast 3 Drifts";
+            timing.text = "2 . 26 . 19";
+            timing.gameObject.SetActive(true);
+            objectivesCat.gameObject.SetActive(true);
+            timingCat.gameObject.SetActive(true);
+        }
+        else
+        {
+            objectives.text = "Timing:  - ";
+            timing.gameObject.SetActive(false);
+            timingCat.gameObject.SetActive(false);
+            objectivesCat.gameObject.SetActive(false);
+        }
     }
     public void Level2ButtonEvent()
     {
@@ -85,7 +100,7 @@ public class TabChanger : MonoBehaviour
             Level1Btn.GetComponent<Image>().sprite = NotSelectedSprite;
 
             Map.GetComponent<Image>().sprite = Map2;
-            objectives.text = "- Get a time faster than 2 mins \n \n - Get 2nd and above \n \n - Do atleast 5 Drifts";
+            objectives.text = "- Get a time faster than 2 mins \n \n- Get 2nd and above \n \n- Do atleast 5 Drifts";
             timing.text = "-";
         }
         else
