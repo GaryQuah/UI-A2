@@ -44,6 +44,11 @@ public class Customisation : MonoBehaviour
     [SerializeField] Sprite Engine4;
 
     // CarStats
+    [SerializeField] GameObject CarStatsImage;
+    [SerializeField] Sprite CarStats1;
+    [SerializeField] Sprite CarStats2;
+    [SerializeField] Sprite CarStats3;
+    [SerializeField] Sprite CarStats4;
 
     public UserInfo user;
 
@@ -60,19 +65,6 @@ public class Customisation : MonoBehaviour
 
         BuyBtn.onClick.AddListener(BuyButtonEvent);
         EquipBtn.onClick.AddListener(EquipButtonEvent);
-
-        if (user.OwnedCar.Count == 0)
-        {
-            user.OwnedCar.Add(user.CarType);
-        }
-        if (user.OwnedWheel.Count == 0)
-        {
-            user.OwnedWheel.Add(user.WheelType);
-        }
-        if (user.OwnedEngine.Count == 0)
-        {
-            user.OwnedEngine.Add(user.WheelType);
-        }
     }
 
     void Update()
@@ -86,6 +78,34 @@ public class Customisation : MonoBehaviour
         WheelBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         EngineBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         Image.GetComponent<Image>().sprite = Car1;
+        i = 0;
+
+
+        Owned.gameObject.SetActive(false);
+        Equiped.gameObject.SetActive(false);
+        EquipBtn.gameObject.SetActive(false);
+        BuyBtn.gameObject.SetActive(false);
+
+        bool b_Owned = false;
+
+        b_Owned = user.OwnedCar.Contains(i);
+
+        if (b_Owned)
+        {
+            Owned.gameObject.SetActive(true);
+            if (user.CarType == i)
+            {
+                Equiped.gameObject.SetActive(true);
+            }
+            else if (user.CarType != i)
+            {
+                EquipBtn.gameObject.SetActive(true);
+            }
+        }
+        else if (!b_Owned)
+        {
+            BuyBtn.gameObject.SetActive(true);
+        }
     }
 
     public void WheelButtonEvent()
@@ -95,6 +115,33 @@ public class Customisation : MonoBehaviour
         EngineBtn.GetComponent<Image>().sprite = NotSelectedSprite;
 
         Image.GetComponent<Image>().sprite = Wheel1;
+        i = 0;
+       
+        Owned.gameObject.SetActive(false);
+        Equiped.gameObject.SetActive(false);
+        EquipBtn.gameObject.SetActive(false);
+        BuyBtn.gameObject.SetActive(false);
+
+        bool b_Owned = false;
+
+        b_Owned = user.OwnedWheel.Contains(i);
+
+        if (b_Owned)
+        {
+            Owned.gameObject.SetActive(true);
+            if (user.WheelType == i)
+            {
+                Equiped.gameObject.SetActive(true);
+            }
+            else if (user.WheelType != i)
+            {
+                EquipBtn.gameObject.SetActive(true);
+            }
+        }
+        else if (!b_Owned)
+        {
+            BuyBtn.gameObject.SetActive(true);
+        }
     }
 
     public void EngineButtonEvent()
@@ -103,6 +150,34 @@ public class Customisation : MonoBehaviour
         WheelBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         CarBtn.GetComponent<Image>().sprite = NotSelectedSprite;
         Image.GetComponent<Image>().sprite = Engine1;
+
+        i = 0;
+
+        Owned.gameObject.SetActive(false);
+        Equiped.gameObject.SetActive(false);
+        EquipBtn.gameObject.SetActive(false);
+        BuyBtn.gameObject.SetActive(false);
+
+        bool b_Owned = false;
+
+        b_Owned = user.OwnedEngine.Contains(i);
+
+        if (b_Owned)
+        {
+            Owned.gameObject.SetActive(true);
+            if (user.EngineType == i)
+            {
+                Equiped.gameObject.SetActive(true);
+            }
+            else if (user.EngineType != i)
+            {
+                EquipBtn.gameObject.SetActive(true);
+            }
+        }
+        else if (!b_Owned)
+        {
+            BuyBtn.gameObject.SetActive(true);
+        }
     }
     public void EquipButtonEvent()
     {
@@ -289,6 +364,22 @@ public class Customisation : MonoBehaviour
             }
         }
 
+        switch (i)
+        {
+            case 0:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats1;
+                break;
+            case 1:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats2;
+                break;
+            case 2:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats3;
+                break;
+            case 3:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats4;
+                break;
+        }
+
         if (BuyBtn.enabled)
             SetTextColor();
     }
@@ -301,6 +392,22 @@ public class Customisation : MonoBehaviour
         i--;
         if (i < 0)
             i = 3;
+
+        switch (i)
+        {
+            case 0:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats1;
+                break;
+            case 1:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats2;
+                break;
+            case 2:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats3;
+                break;
+            case 3:
+                CarStatsImage.GetComponent<Image>().sprite = CarStats4;
+                break;
+        }
 
         bool b_Owned = false;
 

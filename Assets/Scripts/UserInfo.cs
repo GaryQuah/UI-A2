@@ -28,7 +28,28 @@ public class UserInfo : MonoBehaviour
 
     void Start()
     {
-        
+        if (OwnedCar.Count == 0)
+        {
+            OwnedCar.Add(CarType);
+        }
+        if (OwnedWheel.Count == 0)
+        {
+            OwnedWheel.Add(WheelType);
+        }
+        if (OwnedEngine.Count == 0)
+        {
+            OwnedEngine.Add(WheelType);
+        }
+        if (UnlockedLevel.Count == 0)
+        {
+            UnlockedLevel.Add(true);
+            UnlockedLevel.Add(true);
+        }
+        if (ClearedLevel.Count == 0)
+        {
+            ClearedLevel.Add(true);
+            ClearedLevel.Add(false);
+        }
     }
     void Update()
     {
