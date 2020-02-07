@@ -25,6 +25,7 @@ public class LeftScreenControl : MonoBehaviour , IPointerDownHandler , IPointerU
     public void OnPointerDown(PointerEventData data)
     {
         pointerDown = true;
+        Handheld.Vibrate();
     }
 
     public void OnPointerUp(PointerEventData data)

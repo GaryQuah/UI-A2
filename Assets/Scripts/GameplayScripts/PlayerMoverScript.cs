@@ -10,6 +10,7 @@ public class PlayerMoverScript : MonoBehaviour
 
     [SerializeField] private float rayCastDistance = 1.0f;
     [SerializeField] private float jumpForce = 10.0f;
+    [SerializeField] private ParticleSystem SmokeCloud;
 
     private Rigidbody rigidbody;
 
@@ -19,6 +20,8 @@ public class PlayerMoverScript : MonoBehaviour
 
     private RawImage windImage;
 
+    private AudioSource engineAudio;
+
     private bool breaking = false;
 
     // Start is called before the first frame update
@@ -26,7 +29,8 @@ public class PlayerMoverScript : MonoBehaviour
     {
         //Reference to the rigidBody.
         rigidbody = GetComponent<Rigidbody>();
-
+        engineAudio = GetComponent<AudioSource>();
+        engineAudio.volume = 0;
         //Reference to objectives
         objectivesTrackerObject = GameObject.Find("ObjectivesTracker");
 
@@ -55,7 +59,6 @@ public class PlayerMoverScript : MonoBehaviour
             if (objectivesTracker.getNitro() >= 0.25f)
                 objectivesTracker.activateNitro();
         }
-
         move();
     }
 
@@ -74,7 +77,8 @@ public class PlayerMoverScript : MonoBehaviour
 
     public void addToSpeed(float value)
     {
-        moveSpeed += value;
+        if (moveSpeed >= -20)
+            moveSpeed += value;
     }
 
     private void move()
@@ -83,6 +87,10 @@ public class PlayerMoverScript : MonoBehaviour
         float horizontalAxis = Input.GetAxisRaw("Horizontal");
         //W & S Key , Up & Down Arrow input
         float verticalAxis = Input.GetAxisRaw("Vertical");
+
+        var main = SmokeCloud.main;
+        main.simulationSpeed = moveSpeed / 20;
+        engineAudio.volume = moveSpeed / 2000;
 
         if (verticalAxis >= 0 && breaking == false)
         {
@@ -94,7 +102,10 @@ public class PlayerMoverScript : MonoBehaviour
                 windImage.enabled = false;
             }
             else
+            {
                 moveSpeed -= 15.0f * Time.deltaTime;
+
+            }
 
             if (moveSpeed > 240)
                 moveSpeed = 240;
