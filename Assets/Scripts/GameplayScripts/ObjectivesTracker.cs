@@ -33,7 +33,7 @@ public class ObjectivesTracker : MonoBehaviour
     {
         Time.timeScale = 1;
 
-        player = GameObject.Find("RaceCar");
+        player = GameObject.Find("Player");
 
         speedController = player.GetComponent<PlayerMoverScript>();
 

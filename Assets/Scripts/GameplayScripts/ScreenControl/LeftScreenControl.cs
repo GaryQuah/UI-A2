@@ -18,7 +18,7 @@ public class LeftScreenControl : MonoBehaviour , IPointerDownHandler , IPointerU
         objectivesTrackerObject = GameObject.Find("ObjectivesTracker");
 
         objectivesTracker = objectivesTrackerObject.GetComponent<ObjectivesTracker>();
-        player = GameObject.Find("RaceCar");
+        player = GameObject.Find("Player");
         speedController = player.GetComponent<PlayerMoverScript>();
     }
 
