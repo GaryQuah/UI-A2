@@ -12,12 +12,15 @@ public class RightScreenControl : MonoBehaviour
     private GameObject player;
     private Button button;
 
+    private AudioSource nitroSound;
+
     private bool pointerDown = false;
 
     // Start is called before the first frame update
     void Start()
     {
         objectivesTrackerObject = GameObject.Find("ObjectivesTracker");
+        nitroSound = GetComponent<AudioSource>();
 
         objectivesTracker = objectivesTrackerObject.GetComponent<ObjectivesTracker>();
         player = GameObject.Find("Player");
@@ -31,7 +34,11 @@ public class RightScreenControl : MonoBehaviour
     public void nitro()
     {
         if (objectivesTracker.getNitro() >= 0.25f)
+        {
             objectivesTracker.activateNitro();
+            Handheld.Vibrate();
+            nitroSound.Play();
+        }
     }
 
     public void Update()
