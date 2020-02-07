@@ -223,7 +223,7 @@ public class Customisation : MonoBehaviour
         }
         else
         {
-            EditorUtility.DisplayDialog("Not enough Diamonds.", "Red Text indicates that you dont have enough Diamond!", "Ok");
+            //EditorUtility.DisplayDialog("Not enough Diamonds.", "Red Text indicates that you dont have enough Diamond!", "Ok");
         }
 
     }

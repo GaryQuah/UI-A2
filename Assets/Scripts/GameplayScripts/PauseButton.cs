@@ -9,10 +9,14 @@ public class PauseButton : MonoBehaviour
     private Button pauseButton;
     private GameObject pausePanel;
     bool isPaused = false;
+    private AudioSource engineAudio;
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject temp = GameObject.Find("Player");
+        engineAudio = temp.GetComponent<AudioSource>();
+
         pauseButton = GetComponent<Button>();
         pauseButton.onClick.AddListener(pause);
 
@@ -24,6 +28,7 @@ public class PauseButton : MonoBehaviour
         isPaused = false;
         Time.timeScale = 1;
         Debug.Log("button pressed");
+        engineAudio.UnPause();
     }
 
     public void restart()
@@ -44,6 +49,7 @@ public class PauseButton : MonoBehaviour
         isPaused = true;
         Time.timeScale = 0;
         Debug.Log("pause pressed");
+        engineAudio.Pause();
     }
 
     // Update is called once per frame

@@ -27,13 +27,14 @@ public class ObjectivesTracker : MonoBehaviour
 
     //Reference to the car object itself.
     private GameObject player;
-
+    AudioSource engineAudio;
     // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
 
         player = GameObject.Find("Player");
+        engineAudio = player.GetComponent<AudioSource>();
 
         speedController = player.GetComponent<PlayerMoverScript>();
 
@@ -44,12 +45,12 @@ public class ObjectivesTracker : MonoBehaviour
         //
         currentPosition = totalPlayers;
 
-         totalPlayers = 2;
+        totalPlayers = 2;
 
-         currentLap = 0;
-         nitro = 0.0f;
-         nitroActivate = false;
-      }
+        currentLap = 0;
+        nitro = 0.0f;
+        nitroActivate = false;
+     }
 
     public int getTotalPlayers()
     {
@@ -132,7 +133,7 @@ public class ObjectivesTracker : MonoBehaviour
             TextMeshProUGUI raceTimerText = tempGo.GetComponent<TextMeshProUGUI>();
 
             timingText.text = "Timing : " + raceTimerText.text;
-
+            engineAudio.Stop();
             Time.timeScale = 0;
         }
         else

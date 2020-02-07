@@ -24,12 +24,18 @@ public class PlayerMoverScript : MonoBehaviour
 
     private bool breaking = false;
 
+    private AudioSource finishingLineAudio;
+
     // Start is called before the first frame update
     void Start()
     {
         //Reference to the rigidBody.
         rigidbody = GetComponent<Rigidbody>();
         engineAudio = GetComponent<AudioSource>();
+
+        GameObject temp = GameObject.Find("FinishingLine");
+        finishingLineAudio = temp.GetComponent<AudioSource>();
+
         engineAudio.volume = 0;
         //Reference to objectives
         objectivesTrackerObject = GameObject.Find("ObjectivesTracker");
@@ -67,6 +73,7 @@ public class PlayerMoverScript : MonoBehaviour
         if (other.gameObject.name == "FinishingLine")
         {
             objectivesTracker.updateCurrentLap();
+            finishingLineAudio.Play();
         }
     }
 
@@ -90,6 +97,10 @@ public class PlayerMoverScript : MonoBehaviour
 
         var main = SmokeCloud.main;
         main.simulationSpeed = moveSpeed / 20;
+
+        if (main.simulationSpeed <= 0)
+            main.simulationSpeed = 0.1f;
+
         engineAudio.volume = moveSpeed / 2000;
 
         if (verticalAxis >= 0 && breaking == false)
@@ -116,11 +127,15 @@ public class PlayerMoverScript : MonoBehaviour
             windImage.enabled = true;
         }
 
-        Vector3 movement = new Vector3(0, 0, moveSpeed) * 0.002f;
 
-        //Move based on the direction you are looking.
-        Vector3 updatedPosition = rigidbody.position + rigidbody.transform.TransformDirection(movement);
+        if (Time.timeScale > 0)
+        {
+            Vector3 movement = new Vector3(0, 0, moveSpeed) * 0.002f;
 
-        rigidbody.MovePosition(updatedPosition);
+            //Move based on the direction you are looking.
+            Vector3 updatedPosition = rigidbody.position + rigidbody.transform.TransformDirection(movement);
+
+            rigidbody.MovePosition(updatedPosition);
+        }
     }
 }
