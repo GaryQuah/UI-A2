@@ -11,6 +11,8 @@ public class PauseButton : MonoBehaviour
     bool isPaused = false;
     private AudioSource engineAudio;
 
+    [SerializeField] Canvas settingsCanvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +44,16 @@ public class PauseButton : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("MainmenuScene", LoadSceneMode.Single);
+    }
+
+    public void settings()
+    {
+        settingsCanvas.gameObject.SetActive(true);
+    }
+
+    public void deactivateSettings()
+    {
+        settingsCanvas.gameObject.SetActive(false);
     }
 
     void pause()
