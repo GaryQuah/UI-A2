@@ -117,6 +117,7 @@ public class Customisation : MonoBehaviour
         {
             BuyBtn.gameObject.SetActive(true);
         }
+        CarStatsImage.GetComponent<Image>().sprite = CarStats1;
     }
 
     public void WheelButtonEvent()
@@ -234,10 +235,10 @@ public class Customisation : MonoBehaviour
             EquipBtn.gameObject.SetActive(true);
             Owned.gameObject.SetActive(true);
         }
-       // else
-       // {
-            //EditorUtility.DisplayDialog("Not enough Diamonds.", "Red Text indicates that you dont have enough Diamond!", "Ok");
-        //}
+        else
+        {
+            Handheld.Vibrate();
+        }
 
     }
     public void RightArrowButtonEvent()
@@ -473,8 +474,8 @@ public class Customisation : MonoBehaviour
         EquipBtn.gameObject.SetActive(false);
         BuyBtn.gameObject.SetActive(false);
         i--;
-        if (i > 3)
-            i = 0;
+        if (i < 0)
+            i = 3;
 
         bool b_Owned = false;
 
@@ -672,7 +673,7 @@ public class Customisation : MonoBehaviour
                     break;
                 case 3:
                     Image.GetComponent<Image>().sprite = Engine4;
-                    Diamondcost = 155;
+                    Diamondcost = 200;
                     switch (user.CarType)
                     {
                         case 0:
