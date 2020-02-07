@@ -3016,6 +3016,14 @@ MonoBehaviour:
   CarStats2: {fileID: 21300000, guid: 968d9feeb94c19c4087399115ba25bba, type: 3}
   CarStats3: {fileID: 21300000, guid: 08038c4e312ba9447ac91d4493a8a0b7, type: 3}
   CarStats4: {fileID: 21300000, guid: 6971dd192d5040d4f845e84f5fe5a9bb, type: 3}
+  Car1Stats1: {fileID: 21300000, guid: b0c974ecc417bf94e8bacf99de1cc06d, type: 3}
+  Car1Stats2: {fileID: 21300000, guid: 19514866a9de2c04b9609fb4e9196d58, type: 3}
+  Car1Stats3: {fileID: 21300000, guid: f16033f694ac9494ea6dd6faf1fd9949, type: 3}
+  Car1Stats4: {fileID: 21300000, guid: d6423ace6f9698849b888dd162f975a4, type: 3}
+  Car2Stats1: {fileID: 21300000, guid: 46fbfb662bac97244a91dd34174f08da, type: 3}
+  Car2Stats2: {fileID: 21300000, guid: fbd18a6cebcb69c4ea8e3599765a993f, type: 3}
+  Car2Stats3: {fileID: 21300000, guid: 3b343f7078091fe4f88fb947941895a9, type: 3}
+  Car2Stats4: {fileID: 21300000, guid: db21f05fb290ab441bd428cc6f71b648, type: 3}
   user: {fileID: 1677772973}
 --- !u!1 &1977856584
 GameObject:

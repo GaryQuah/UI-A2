@@ -52,6 +52,7 @@ public class TabChanger : MonoBehaviour
 
         ColorBlock Level2BtnColors = Level2Btn.colors;
         Level2BtnColors.normalColor = new Color32(255, 255, 255, 255);
+        Level2BtnColors.selectedColor = new Color32(245, 245, 245, 245);
         Level2Btn.colors = Level2BtnColors;
     }
 
@@ -63,6 +64,7 @@ public class TabChanger : MonoBehaviour
 
         ColorBlock Level2BtnColors = Level2Btn.colors;
         Level2BtnColors.normalColor = new Color32(200,200,200,200);
+        Level2BtnColors.selectedColor = new Color32(200,200,200,200);
         Level2Btn.colors = Level2BtnColors;
     }
 
